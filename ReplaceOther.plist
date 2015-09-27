@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>regex</key>
+		<string>^\s*--bl$</string>
+		<key>replaceContent</key>
+		<string>typedef &lt;#returnType#&gt;(^&lt;#name#&gt;)(&lt;#arguments#&gt;);</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*@ps$</string>
+		<key>replaceContent</key>
+		<string>@property (nonatomic, strong) &lt;#custom#&gt;</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*@pw$</string>
+		<key>replaceContent</key>
+		<string>@property (nonatomic, weak) &lt;#custom#&gt;</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*@pa$</string>
+		<key>replaceContent</key>
+		<string>@property (nonatomic, assign) &lt;#custom#&gt;</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*@pc$</string>
+		<key>replaceContent</key>
+		<string>@property (nonatomic, copy) NSString *&lt;#custom#&gt;</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*-\s*\(\s*id\s*\)\s*init\s*//$</string>
+		<key>replaceContent</key>
+		<string>- (instancetype)init {
+    if (self = [super init]) {
+        &lt;#statements#&gt;
+    }
+    return self;
+}</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*-\s*\(\s*instancetype\s*\)\s*init\s*//$</string>
+		<key>replaceContent</key>
+		<string>- (instancetype)init {
+    if (self = [super init]) {
+        &lt;#statements#&gt;
+    }
+    return self;
+}</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*--mvc$</string>
+		<key>replaceContent</key>
+		<string> - (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"&lt;#title#&gt;";
+
+    &lt;#self.view addSubview#&gt;
+    [self.view setNeedsUpdateConstraints];
+    
+    [self _addObserve];
+}
+
+- (void)updateViewConstraints {
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        &lt;#add static constraints#&gt;
+    });
+
+    [super updateViewConstraints];
+}
+
+#pragma mark - protocol methods
+
+#pragma mark - public methons
+
+#pragma mark - private methons
+
+- (void)_addObserve {
+	&lt;#add observe#&gt;
+}
+
+#pragma mark - private UI property methons
+
+&lt;#UI property getter methons#&gt;</string>
+	</dict>
+	<dict>
+		<key>regex</key>
+		<string>^\s*--mcv$</string>
+		<key>replaceContent</key>
+		<string> - (id)init {
+    if (self = [super init]) {
+    	&lt;#self addSubview#&gt;
+	    [self setNeedsUpdateConstraints];
+
+	    [self _addObserve];
+    }
+    return self;
+}
+
+- (void)updateConstraints {
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        &lt;#add static constraints#&gt;
+    });
+
+    [super updateConstraints];
+}
+
+#pragma mark - protocol methods
+
+#pragma mark - public methons
+
+#pragma mark - private methons
+
+- (void)_addObserve {
+	&lt;#add observe#&gt;
+}
+
+#pragma mark - private UI property methons
+
+&lt;#UI property getter methons#&gt;</string>
+	</dict>
+</array>
+</plist>
