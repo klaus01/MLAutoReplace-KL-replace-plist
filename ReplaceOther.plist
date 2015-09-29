@@ -58,7 +58,11 @@
 		<key>regex</key>
 		<string>^\s*--mvc$</string>
 		<key>replaceContent</key>
-		<string> - (void)viewDidLoad {
+		<string>{
+    BOOL _hasLoadedConstraints;
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"&lt;#title#&gt;";
 
@@ -69,10 +73,9 @@
 }
 
 - (void)updateViewConstraints {
-    static dispatch_once_t onceToken;
-    dispatch_once(&amp;onceToken, ^{
-        &lt;#add static constraints#&gt;
-    });
+    if (!_hasLoadedConstraints) {
+    	&lt;#add static constraints#&gt;
+    }
 
     [super updateViewConstraints];
 }
@@ -95,7 +98,11 @@
 		<key>regex</key>
 		<string>^\s*--mcv$</string>
 		<key>replaceContent</key>
-		<string> - (id)init {
+		<string>{
+    BOOL _hasLoadedConstraints;
+}
+
+- (id)init {
     if (self = [super init]) {
     	&lt;#self addSubview#&gt;
 	    [self setNeedsUpdateConstraints];
@@ -106,10 +113,9 @@
 }
 
 - (void)updateConstraints {
-    static dispatch_once_t onceToken;
-    dispatch_once(&amp;onceToken, ^{
-        &lt;#add static constraints#&gt;
-    });
+    if (!_hasLoadedConstraints) {
+    	&lt;#add static constraints#&gt;
+    }
 
     [super updateConstraints];
 }
