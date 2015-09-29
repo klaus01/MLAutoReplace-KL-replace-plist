@@ -58,11 +58,7 @@
 		<key>regex</key>
 		<string>^\s*--mvc$</string>
 		<key>replaceContent</key>
-		<string>{
-    BOOL _hasLoadedConstraints;
-}
-
-- (void)viewDidLoad {
+		<string>- (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"&lt;#title#&gt;";
 
@@ -73,9 +69,7 @@
 }
 
 - (void)updateViewConstraints {
-    if (!_hasLoadedConstraints) {
-    	&lt;#add static constraints#&gt;
-    }
+    &lt;#add static constraints#&gt;
 
     [super updateViewConstraints];
 }
@@ -98,11 +92,7 @@
 		<key>regex</key>
 		<string>^\s*--mcv$</string>
 		<key>replaceContent</key>
-		<string>{
-    BOOL _hasLoadedConstraints;
-}
-
-- (id)init {
+		<string>- (id)init {
     if (self = [super init]) {
     	&lt;#self addSubview#&gt;
 	    [self setNeedsUpdateConstraints];
@@ -113,9 +103,7 @@
 }
 
 - (void)updateConstraints {
-    if (!_hasLoadedConstraints) {
-    	&lt;#add static constraints#&gt;
-    }
+    &lt;#add static constraints#&gt;
 
     [super updateConstraints];
 }
